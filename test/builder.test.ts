@@ -19,3 +19,11 @@ test('builds built-in presets', async () => {
   assert.ok(result.manifest.entries.some((entry) => entry.path === 'package.json'));
   assert.ok(result.manifest.warnings.some((warning) => warning.includes('fake secret')));
 });
+
+test('clean builds remove stale files', async () => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'fixtureforge-clean-'));
+  await fs.writeFile(path.join(root, 'stale.txt'), 'stale\n');
+  await buildFixture({ files: [{ path: 'fresh.txt', content: 'fresh\n' }] }, root, { clean: true });
+  await assert.rejects(() => fs.stat(path.join(root, 'stale.txt')));
+  assert.equal(await fs.readFile(path.join(root, 'fresh.txt'), 'utf8'), 'fresh\n');
+});
