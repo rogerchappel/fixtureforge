@@ -19,3 +19,7 @@ test('writes and loads JSON default spec', async () => {
   assert.equal(spec.name, 'demo-fixture');
   assert.deepEqual(spec.presets, ['node-cli']);
 });
+
+test('rejects duplicate output paths across entry kinds', () => {
+  assert.throws(() => validateSpec({ directories: ['same'], files: [{ path: 'same', content: 'x' }] }), /Duplicate fixture path/);
+});
