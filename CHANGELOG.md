@@ -1,21 +1,13 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-
-This project follows the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
-format and uses semantic versioning when versioned releases are published.
-
-## [Unreleased]
+## 0.1.0 - 2026-05-08
 
 ### Added
 
-- Initial project setup.
-
-## Release Links
-
-- Unreleased:
-  `https://github.com/rogerchappel/fixtureforge/compare/...HEAD`
-- Latest release:
-  `https://github.com/rogerchappel/fixtureforge/releases/latest`
-
-Replace placeholder links once the first release tag exists.
+- Local-first TypeScript CLI with `init`, `build`, `validate`, and `presets` commands.
+- Deterministic JSON/YAML fixture specs.
+- Built-in presets: `node-cli`, `polyrepo`, `messy-config`, `secret-ish`, and `broken-files`.
+- Manifest generation with paths, sizes, hashes, symlink targets, and expected warnings.
+- Drift validation for missing, changed, extra, and type-mismatched paths.
+- Path-safety checks that reject absolute paths, traversal, empty segments, and null bytes.
+- Tests, examples, smoke script, spec reference, and manifest reference.
