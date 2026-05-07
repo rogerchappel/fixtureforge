@@ -1,0 +1,8 @@
+name: security-scan-example
+seed: security-docs
+presets:
+  - secret-ish
+  - broken-files
+files:
+  - path: reports/expected.txt
+    content: scanner should flag fake tokens only

@@ -1,0 +1,9 @@
+{
+  "name": "node-cli-example",
+  "seed": "docs-example",
+  "presets": ["node-cli"],
+  "files": [
+    { "path": "fixtures/custom.txt", "content": "hello from fixtureforge\n" },
+    { "path": "fixtures/random.log", "lines": 5 }
+  ]
+}
