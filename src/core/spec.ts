@@ -47,7 +47,20 @@ export function validateSpec(data: unknown): FixtureSpec {
     }) : [],
     warnings: Array.isArray(raw.warnings) ? raw.warnings.map(String) : []
   };
+  assertUniquePaths(spec);
   return spec;
+}
+
+function assertUniquePaths(spec: FixtureSpec): void {
+  const seen = new Map<string, string>();
+  const add = (itemPath: string, kind: string) => {
+    const previous = seen.get(itemPath);
+    if (previous) throw new FixtureForgeError('E_SPEC_DUPLICATE_PATH', `Duplicate fixture path ${itemPath} used by ${previous} and ${kind}.`);
+    seen.set(itemPath, kind);
+  };
+  for (const directory of spec.directories ?? []) add(directory, 'directory');
+  for (const file of spec.files ?? []) add(file.path, 'file');
+  for (const link of spec.symlinks ?? []) add(link.path, 'symlink');
 }
 
 function validatePresets(value: FixtureSpec['presets']): PresetName[] {
