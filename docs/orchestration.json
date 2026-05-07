@@ -1,0 +1,17 @@
+{
+  "project": "fixtureforge",
+  "status": "mvp-complete",
+  "repository": "rogerchappel/fixtureforge",
+  "branch": "main",
+  "milestones": [
+    { "id": "docs", "name": "Product docs and task tracking", "status": "complete" },
+    { "id": "foundation", "name": "TypeScript CLI package foundation", "status": "complete" },
+    { "id": "spec", "name": "Spec loading and validation", "status": "complete" },
+    { "id": "engine", "name": "Deterministic fixture generation", "status": "complete" },
+    { "id": "presets", "name": "Built-in V1 presets", "status": "complete" },
+    { "id": "validate", "name": "Manifest drift validation", "status": "complete" },
+    { "id": "quality", "name": "Tests, examples, docs, and smoke checks", "status": "complete" },
+    { "id": "release", "name": "GitHub publication and branch protection", "status": "complete" }
+  ],
+  "verification": ["npm test", "npm run check", "npm run build", "npm run smoke", "bash scripts/validate.sh"]
+}
