@@ -1,4 +1,5 @@
 export { buildFixture, expandSpec } from './core/builder.js';
+export type { BuildOptions } from './core/builder.js';
 export { loadSpec, validateSpec, writeDefaultSpec, defaultSpec } from './core/spec.js';
 export { validateFixture, summarizeValidation } from './core/validator.js';
 export { presetDescriptions, presetNames, getPreset } from './presets/registry.js';
