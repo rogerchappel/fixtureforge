@@ -7,9 +7,14 @@ import { createManifest, directoryEntry, fileEntry, symlinkEntry, writeManifest 
 import { normalizeSpecPath, resolveInside } from './path-safety.js';
 import { validateSpec } from './spec.js';
 
-export async function buildFixture(inputSpec: FixtureSpec, outdir: string): Promise<BuildResult> {
+export interface BuildOptions {
+  clean?: boolean;
+}
+
+export async function buildFixture(inputSpec: FixtureSpec, outdir: string, options: BuildOptions = {}): Promise<BuildResult> {
   const spec = expandSpec(validateSpec(inputSpec));
   const root = path.resolve(outdir);
+  if (options.clean) await fs.rm(root, { recursive: true, force: true });
   await fs.mkdir(root, { recursive: true });
   const entries: ManifestEntry[] = [];
 

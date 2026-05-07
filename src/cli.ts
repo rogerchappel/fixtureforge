@@ -30,7 +30,7 @@ export async function main(argv = process.argv.slice(2)): Promise<number> {
     if (args.command === 'build') {
       const [specPath, outdir] = args.positionals;
       if (!specPath || !outdir) throw new Error('build requires <spec> and <outdir>.');
-      const result = await buildFixture(await loadSpec(specPath), outdir);
+      const result = await buildFixture(await loadSpec(specPath), outdir, { clean: Boolean(args.flags.clean) });
       console.log(`Built ${result.manifest.entries.length} entries at ${result.outdir}`);
       console.log(`Manifest: ${result.manifestPath}`);
       if (result.manifest.warnings.length) console.log(`Warnings: ${result.manifest.warnings.join('; ')}`);

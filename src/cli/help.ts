@@ -2,7 +2,7 @@ export const helpText = `fixtureforge - deterministic local-first fixture trees
 
 Usage:
   fixtureforge init [spec.json|spec.yaml] [--format json|yaml]
-  fixtureforge build <spec.json|spec.yaml> <outdir>
+  fixtureforge build <spec.json|spec.yaml> <outdir> [--clean]
   fixtureforge validate <outdir> --manifest <manifest.json>
   fixtureforge presets
 
