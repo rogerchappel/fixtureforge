@@ -13,7 +13,7 @@ Or run locally from this repo:
 ```bash
 npm install
 npm run build
-node dist/cli.js --help
+node dist/src/cli.js --help
 ```
 
 ## Quick Start

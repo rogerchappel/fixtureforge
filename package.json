@@ -4,14 +4,14 @@
   "description": "Deterministic local-first file-tree fixtures for CLI tests.",
   "type": "module",
   "bin": {
-    "fixtureforge": "./dist/cli.js"
+    "fixtureforge": "./dist/src/cli.js"
   },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
     }
   },
   "files": [
