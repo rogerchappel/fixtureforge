@@ -1,6 +1,6 @@
 # fixtureforge
 
-Status: in-progress
+Status: MVP complete
 Decision: selected for 2026-05-08 OSS factory run
 
 ## Scorecard
@@ -33,15 +33,15 @@ Inspired by test fixture generators and project scaffolding CLIs; implementation
 
 ## V1 Scope
 
-- TypeScript CLI package.
-- `fixtureforge init` creates a fixture spec file.
-- `fixtureforge build <spec> <outdir>` creates deterministic trees from YAML/JSON specs.
-- Built-in presets: `node-cli`, `polyrepo`, `messy-config`, `secret-ish`, `broken-files`.
-- Deterministic seeded content generation.
-- Manifest with file paths, sizes, checksums, and expected warnings.
-- `fixtureforge validate <outdir> --manifest <manifest>` checks fixture drift.
-- Tests for presets, determinism, validation failures, and path safety.
-- README with copy-paste examples for CLI projects.
+- [x] TypeScript CLI package.
+- [x] `fixtureforge init` creates a fixture spec file.
+- [x] `fixtureforge build <spec> <outdir>` creates deterministic trees from YAML/JSON specs.
+- [x] Built-in presets: `node-cli`, `polyrepo`, `messy-config`, `secret-ish`, `broken-files`.
+- [x] Deterministic seeded content generation.
+- [x] Manifest with file paths, sizes, checksums, and expected warnings.
+- [x] `fixtureforge validate <outdir> --manifest <manifest>` checks fixture drift.
+- [x] Tests for presets, determinism, validation failures, and path safety.
+- [x] README with copy-paste examples for CLI projects.
 
 ## Out of Scope
 
