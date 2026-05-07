@@ -35,7 +35,10 @@ async function checkEntry(root: string, entry: ManifestEntry, issues: Validation
   }
 
   if (entry.type === 'file') {
-    if (!stat.isFile()) return issues.push({ path: entry.path, kind: 'type', message: `Expected file: ${entry.path}` });
+    if (!stat.isFile()) {
+      issues.push({ path: entry.path, kind: 'type', message: `Expected file: ${entry.path}` });
+      return;
+    }
     const bytes = await fs.readFile(absolute);
     if (bytes.length !== entry.size || sha256(bytes) !== entry.sha256) {
       issues.push({ path: entry.path, kind: 'changed', message: `File drifted: ${entry.path}` });
@@ -48,7 +51,10 @@ async function checkEntry(root: string, entry: ManifestEntry, issues: Validation
     return;
   }
 
-  if (!stat.isSymbolicLink()) return issues.push({ path: entry.path, kind: 'type', message: `Expected symlink: ${entry.path}` });
+  if (!stat.isSymbolicLink()) {
+    issues.push({ path: entry.path, kind: 'type', message: `Expected symlink: ${entry.path}` });
+    return;
+  }
   const target = await fs.readlink(absolute);
   if (target !== entry.target) issues.push({ path: entry.path, kind: 'changed', message: `Symlink drifted: ${entry.path}` });
 }
