@@ -2,78 +2,44 @@
 
 Thanks for helping improve `fixtureforge`.
 
-This project values small, reviewable contributions with clear verification.
+## Local Setup
 
-## Issues
-
-Before opening an issue:
-
-- Search existing issues.
-- Confirm the issue applies to `fixtureforge`.
-- Include enough context for maintainers to understand or reproduce the request.
-
-Bug reports should include:
-
-- What happened.
-- What you expected.
-- Steps to reproduce.
-- Relevant logs, screenshots, or files.
-- The smallest verification step that demonstrates the issue.
-
-Feature requests should include:
-
-- The use case.
-- Why the current project does not solve it.
-- Risks or compatibility concerns.
-- Suggested files or behavior that may need to change.
-
-## Pull Requests
-
-Pull requests should:
-
-- Focus on one reviewable intent.
-- Use a branch.
-- Follow Conventional Commits.
-- Include tests or verification appropriate to the change.
-- Update documentation when behavior or usage changes.
-- Avoid unrelated formatting or dependency churn.
-- Avoid secrets, private contact details, and project-specific sensitive information.
-
-## Review Pack
-
-Use this format for meaningful changes:
-
-```md
-## Review Pack
-Repo:
-Branch:
-PR:
-Task:
-Status: done / blocked / needs review
-Summary:
-Commits:
-Files changed:
-Verification:
-Risk level:
-Rollback plan:
-Human decision needed:
-Next recommended task:
+```bash
+npm install
+npm test
+npm run check
+npm run build
+npm run smoke
 ```
 
-## Verification
+## Project Guidelines
 
-Every contribution should include verification.
+- Keep fixture output deterministic.
+- Keep runtime local-first; do not add network calls to generation or validation.
+- Treat path safety as a core feature.
+- Add or update tests for every behavior change.
+- Prefer small focused pull requests.
 
-Examples:
+## Commit Style
 
-- Documentation: inspect rendered Markdown or review the diff.
-- Tests: run the targeted test command.
-- Types: run the project typecheck.
-- Build: run the smallest build command that covers the change.
-- Manual QA: provide exact steps and observed result.
+Use concise conventional-style commits when practical, for example:
 
-If verification cannot be run, explain why and provide the exact command maintainers should run.
+- `feat: add preset option`
+- `fix: reject unsafe symlink path`
+- `docs: clarify manifest validation`
 
-## Maintainer Review
+## Adding Presets
 
-Maintainers may request narrower scope, clearer verification, additional tests, or safer defaults before merging.
+1. Add the preset to `PresetName` in `src/types.ts`.
+2. Add description and implementation in `src/presets/registry.ts`.
+3. Add tests that build the preset and validate deterministic output.
+4. Document the preset in `README.md`.
+
+## Reporting Issues
+
+Please include:
+
+- Node.js version
+- `fixtureforge` version or commit SHA
+- Spec file (with secrets removed)
+- Expected vs actual behavior

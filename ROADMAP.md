@@ -1,38 +1,22 @@
 # Roadmap
 
-This roadmap describes intended direction, not a binding delivery promise.
-Review it regularly and update it as the project learns from users,
-contributors, and implementation constraints.
+## 0.1 MVP
 
-## Now
+- Deterministic JSON/YAML fixture specs.
+- Built-in presets for common CLI-test scenarios.
+- Manifest generation and drift validation.
+- Local-first TypeScript CLI.
 
-- Define the smallest useful project scope.
-- Keep repository setup, documentation, and verification easy for contributors
-  to follow.
-- Ship small, reviewable improvements.
+## Later Ideas
 
-## Next
+- Richer YAML support through an optional dependency.
+- User-defined preset packs.
+- More content generators for source files, logs, and config formats.
+- Snapshot-friendly manifest diff output.
+- Windows-specific path edge-case fixtures.
 
-- Add the next capabilities that directly support the project's primary users.
-- Improve tests, docs, and examples around the most used workflows.
-- Reduce setup friction discovered during early use.
+## Non-Goals
 
-## Later
-
-- Consider larger features after the core workflow is stable.
-- Add automation only where it removes repeated maintainer work.
-- Revisit packaging, deployment, or integration options based on real demand.
-
-## Not Planned
-
-- Unrelated platform rewrites without a clear migration path.
-- Mandatory dependencies on a single ecosystem unless the project requires it.
-- Public release dates before maintainers are ready to commit to them.
-
-## Roadmap Review
-
-Before each major or meaningful minor release:
-
-- Move completed user-visible work into `CHANGELOG.md`.
-- Remove stale commitments.
-- Promote only the next reviewable set of work into `Now`.
+- Networked fixture services.
+- Installing dependencies into generated fixtures.
+- Large-scale fuzzing or benchmark datasets.

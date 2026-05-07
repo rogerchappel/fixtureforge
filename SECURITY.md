@@ -2,57 +2,32 @@
 
 ## Supported Versions
 
-Replace this section with the supported versions for `fixtureforge`.
-
-Example:
-
-```md
-| Version | Supported |
-| --- | --- |
-| .x | Yes |
-| < .0 | No |
-```
-
-If the project does not publish versioned releases yet, say that clearly.
+Security fixes target the latest released `0.x` version.
 
 ## Reporting a Vulnerability
 
-Please do not report suspected vulnerabilities in public issues, pull requests, or discussions.
+Please report security issues privately via GitHub Security Advisories for `rogerchappel/fixtureforge` when available. If advisories are unavailable, open a minimal issue asking for a private contact path and avoid posting exploit details publicly.
 
-Ask maintainers for the private security reporting path before sharing details.
+## Runtime Security Model
 
-If no private reporting path exists yet, ask maintainers through public project channels for a private reporting path. Do not include exploit details, secrets, personal data, or sensitive technical details in public messages.
+`fixtureforge` is designed to be local-first:
 
-## What to Include
+- No runtime network calls.
+- No package installation inside generated fixtures.
+- Generated paths are required to be relative and cannot contain parent traversal, empty segments, absolute roots, or null bytes.
+- Validation reads fixture trees and manifests but does not mutate the tree.
 
-When a private reporting path is available, include:
+## Fake Secrets
 
-- A clear description of the issue.
-- Affected versions, files, packages, workflows, or configuration.
-- Steps to reproduce, proof of concept, or attack scenario when safe to share.
-- Potential impact.
-- Suggested mitigation, if known.
-
-## Response Expectations
-
-Maintainers review good-faith reports as capacity allows.
-
-Do not imply paid support, guaranteed response times, guaranteed fixes, or service-level agreements unless `fixtureforge` explicitly provides them.
+The `secret-ish` preset intentionally creates fake credential-looking values for scanner tests. They are not real credentials and should not be used as secrets.
 
 ## Scope
 
-In scope:
+Please report:
 
-- Vulnerabilities in fixtureforge.
-- Insecure default configuration shipped by this project.
-- CI, release, or dependency guidance maintained by this project.
+- Path traversal or output-directory escape bugs.
+- Unexpected command execution.
+- Runtime network calls.
+- Manifest validation bypasses with security impact.
 
-Out of scope:
-
-- General support requests.
-- Requests for guaranteed maintenance timelines.
-- Issues in unrelated downstream projects.
-
-## Disclosure
-
-Coordinate disclosure with maintainers before publishing vulnerability details.
+Please do not report fake values from bundled examples or presets as leaked credentials.
