@@ -1,0 +1,35 @@
+{
+  "name": "agent-docs-pack",
+  "seed": "doc-agent-demo",
+  "presets": ["messy-config"],
+  "directories": ["docs", "docs/runbooks", "memory"],
+  "files": [
+    {
+      "path": "README.md",
+      "content": "# Demo Workspace\n\nThis fixture gives doc-search and agent-handoff tools a small local tree to inspect.\n"
+    },
+    {
+      "path": "docs/runbooks/release.md",
+      "content": "# Release Runbook\n\nCheck the local build, smoke command, and rollback note before publishing.\n"
+    },
+    {
+      "path": "memory/2026-06-05.md",
+      "content": "# Agent Memory\n\nThe current risk is stale docs, not package behavior.\n"
+    },
+    {
+      "path": "configs/service.json",
+      "json": {
+        "service": "docs-demo",
+        "retries": 2,
+        "featureFlags": {
+          "localOnly": true
+        }
+      }
+    },
+    {
+      "path": "logs/sample-output.txt",
+      "lines": 6
+    }
+  ],
+  "warnings": ["Fixture intentionally includes messy config files for scanner demos."]
+}

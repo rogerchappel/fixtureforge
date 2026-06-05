@@ -26,6 +26,8 @@ fixtureforge validate tmp/my-fixture --manifest tmp/my-fixture/.fixtureforge-man
 
 Generated fixtures are deterministic: the same spec and seed produce the same files and manifest.
 
+For a docs-and-agent-workspace example, see [`examples/agent-docs-pack.json`](examples/agent-docs-pack.json) and the tutorial in [`docs/tutorials/build-agent-doc-fixture.md`](docs/tutorials/build-agent-doc-fixture.md).
+
 ## Spec Example
 
 ```json
