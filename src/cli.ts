@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { realpathSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { buildFixture } from './core/builder.js';
 import { asErrorMessage } from './core/errors.js';
 import { loadSpec, writeDefaultSpec } from './core/spec.js';
@@ -53,6 +55,6 @@ export async function main(argv = process.argv.slice(2)): Promise<number> {
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && realpathSync(process.argv[1]) === fileURLToPath(import.meta.url)) {
   process.exitCode = await main();
 }
