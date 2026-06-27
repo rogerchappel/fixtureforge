@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { realpathSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { buildFixture } from './core/builder.js';
 import { asErrorMessage } from './core/errors.js';
@@ -9,9 +10,17 @@ import { presetDescriptions, presetNames } from './presets/registry.js';
 import { flagString, parseArgs } from './cli/args.js';
 import { helpText } from './cli/help.js';
 
+const require = createRequire(import.meta.url);
+const { version } = require('../../package.json') as { version: string };
+
 export async function main(argv = process.argv.slice(2)): Promise<number> {
   const args = parseArgs(argv);
   try {
+    if (args.flags.version || args.command === 'version' || args.command === '--version') {
+      console.log(version);
+      return 0;
+    }
+
     if (!args.command || args.command === 'help' || args.flags.help) {
       console.log(helpText);
       return 0;

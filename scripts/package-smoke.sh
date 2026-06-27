@@ -19,6 +19,8 @@ npm init -y >/dev/null
 npm install "$package_tgz" >/dev/null
 
 ./node_modules/.bin/fixtureforge >/dev/null
+installed_version="$(./node_modules/.bin/fixtureforge --version)"
+test "$installed_version" = "$(node -p "require('./node_modules/fixtureforge/package.json').version")"
 presets_output="$(./node_modules/.bin/fixtureforge presets)"
 grep -q 'node-cli' <<<"$presets_output"
 ./node_modules/.bin/fixtureforge build node_modules/fixtureforge/examples/node-cli.json "$tmp/generated"

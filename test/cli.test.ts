@@ -3,7 +3,11 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
+import { createRequire } from 'node:module';
 import { main } from '../src/cli.js';
+
+const require = createRequire(import.meta.url);
+const { version } = require('../../package.json') as { version: string };
 
 test('CLI init build validate flow returns success codes', async () => {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'fixtureforge-cli-'));
@@ -16,4 +20,20 @@ test('CLI init build validate flow returns success codes', async () => {
 
 test('CLI rejects unknown commands', async () => {
   assert.equal(await main(['wat']), 1);
+});
+
+test('CLI reports the package version', async () => {
+  const writes: string[] = [];
+  const originalLog = console.log;
+  console.log = (message?: unknown) => {
+    writes.push(String(message));
+  };
+  try {
+    assert.equal(await main(['--version']), 0);
+    assert.equal(writes.at(-1), version);
+    assert.equal(await main(['version']), 0);
+    assert.equal(writes.at(-1), version);
+  } finally {
+    console.log = originalLog;
+  }
 });

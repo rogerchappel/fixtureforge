@@ -22,6 +22,7 @@ node dist/src/cli.js --help
 fixtureforge init fixtureforge.json
 fixtureforge build fixtureforge.json tmp/my-fixture
 fixtureforge validate tmp/my-fixture --manifest tmp/my-fixture/.fixtureforge-manifest.json
+fixtureforge --version
 ```
 
 Generated fixtures are deterministic: the same spec and seed produce the same files and manifest.
@@ -61,6 +62,7 @@ files:
 - `fixtureforge build <spec> <outdir>` — generate files and `.fixtureforge-manifest.json`.
 - `fixtureforge validate <outdir> --manifest <manifest>` — check drift without mutating files.
 - `fixtureforge presets` — list built-in presets.
+- `fixtureforge version` / `fixtureforge --version` — print the installed package version.
 
 ## Built-in Presets
 
@@ -82,21 +84,6 @@ const validation = await validateFixture('tmp/demo', built.manifestPath);
 ## Safety Model
 
 `fixtureforge` is local-only. It makes no network calls at runtime and rejects absolute paths, parent traversal, empty path segments, and null bytes in generated fixture paths.
-
-## Development
-
-```bash
-npm install
-npm test
-npm run check
-npm run build
-npm run smoke
-bash scripts/validate.sh
-```
-
-## License
-
-MIT
 
 ## Development
 
@@ -124,3 +111,7 @@ npm pack --dry-run
 The package smoke installs the generated tarball into a temporary app, checks
 the installed `fixtureforge` binary, and validates a generated fixture from the
 packaged examples before tagging or publishing.
+
+## License
+
+MIT
