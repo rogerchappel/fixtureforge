@@ -5,6 +5,8 @@ Usage:
   fixtureforge build <spec.json|spec.yaml> <outdir> [--clean]
   fixtureforge validate <outdir> --manifest <manifest.json>
   fixtureforge presets
+  fixtureforge version
+  fixtureforge --version
 
 Examples:
   fixtureforge init fixtureforge.json
