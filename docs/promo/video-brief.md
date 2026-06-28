@@ -16,8 +16,8 @@ Show how `fixtureforge` creates deterministic local file trees so CLI tests and 
 
 1. Run `node dist/src/cli.js presets` to show the built-in fixture shapes.
 2. Open `examples/agent-docs-pack.json` and point out the seed, directories, files, and `messy-config` preset.
-3. Build the fixture into `tmp/agent-docs-pack`.
-4. Run `validate` with the generated `.fixtureforge-manifest.json`.
+3. Run `bash demo/run-agent-docs-fixture.sh`.
+4. Open `/tmp/fixtureforge-agent-docs/workspace/docs/runbooks/release.md`.
 5. Change one generated file and rerun `validate` to show drift detection.
 
 ## Claims To Avoid
