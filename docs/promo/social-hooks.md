@@ -14,9 +14,16 @@ Try the local demo:
 
 ```sh
 npm run build
-node dist/src/cli.js build examples/agent-docs-pack.json tmp/agent-docs-pack
-node dist/src/cli.js validate tmp/agent-docs-pack --manifest tmp/agent-docs-pack/.fixtureforge-manifest.json
+bash demo/run-agent-docs-fixture.sh
 ```
+
+The demo writes a synthetic docs workspace under `/tmp/fixtureforge-agent-docs/workspace` and verifies the generated manifest.
+
+## Launch Note Draft
+
+`fixtureforge` helps CLI maintainers build deterministic file-tree fixtures without copying private repositories into tests or demos. Specs can be JSON or YAML, presets cover common repo shapes, and each generated tree includes a manifest that can be validated later for drift.
+
+The agent-docs demo uses `examples/agent-docs-pack.json` to create Markdown docs, a runbook, a memory note, JSON config, generated text, and intentionally messy config files. It is a public-safe fixture for demos of doc scanners, agent handoff tools, and local file-tree workflows.
 
 ## Guardrails
 
