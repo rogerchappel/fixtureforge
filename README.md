@@ -29,6 +29,14 @@ Generated fixtures are deterministic: the same spec and seed produce the same fi
 
 For a docs-and-agent-workspace example, see [`examples/agent-docs-pack.json`](examples/agent-docs-pack.json) and the tutorial in [`docs/tutorials/build-agent-doc-fixture.md`](docs/tutorials/build-agent-doc-fixture.md).
 
+## Verification
+
+Run the full local gate before changing fixture generation or package contents:
+
+```bash
+npm run release:check
+```
+
 ## Spec Example
 
 ```json
