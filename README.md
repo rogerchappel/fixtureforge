@@ -2,6 +2,20 @@
 
 Deterministic local-first file-tree fixtures for CLI tests. `fixtureforge` stamps out tiny fake repositories with realistic edge cases — package manifests, messy configs, fake secrets, broken files, binary blobs, odd names, and manifests you can validate later.
 
+
+## Quickstart
+
+Run the tool from a fresh checkout:
+
+```sh
+npm install
+npm run build
+node dist/src/cli.js --help
+npm test
+```
+
+The help command confirms the CLI entrypoint is reachable, and `npm test` runs the committed regression suite before you rely on the output.
+
 ## Install
 
 ```bash
